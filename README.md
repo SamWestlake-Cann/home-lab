@@ -20,8 +20,8 @@ IT Support, Help Desk, and NOC roles.
 | Phase | Topic | Status |
 |---|---|---|
 | 1 | Networking fundamentals | ✅ Complete |
-| 2 | Windows administration | 🔄 In progress |
-| 3 | Cybersecurity basics | ⏳ Upcoming |
+| 2 | Windows administration | ✅ Complete |
+| 3 | Cybersecurity basics | 🔄 In progress |
 | 4 | NOC readiness | ⏳ Upcoming |
 | 5 | Portfolio & documentation | ⏳ Upcoming |
 
@@ -30,3 +30,13 @@ IT Support, Help Desk, and NOC roles.
 - Build practical evidence of IT skills for job applications
 - Document troubleshooting processes as real ticket-style writeups
 - Work toward CompTIA A+, Network+, and Security+ certifications
+
+## Tickets
+
+Real help desk tickets raised and resolved during lab work:
+
+| Ticket | Title | Priority | Status |
+|---|---|---|---|
+| 001 | Printer not working | Low | ✅ Resolved |
+| 002 | User unable to access folder | Medium | ✅ Resolved |
+| 003 | Static IP configuration request | Medium | ✅ Resolved |
