@@ -9,7 +9,7 @@ Windows 11 VM (SAM-LAB-CLIENT01).
 ## Environment
 - **Host:** MacBook Air (192.168.1.106)
 - **VM:** Windows 11 — SAM-LAB-CLIENT01 (192.168.64.10 static)
-- **Tools used:** PowerShell (Administrator), Computer Management, Event Viewer, File Explorer, Windows Firewall
+- **Tools used:** PowerShell, Computer Management, Event Viewer, File Explorer, Windows Firewall
 
 ## Tasks Completed
 
@@ -26,7 +26,7 @@ Administrators and Users groups. Added descriptions to all accounts.
 | Administrator | Disabled | Built-in (security best practice) |
 | Guest | Disabled | Built-in (security best practice) |
 
-**Commands used:** `Get-LocalUser` `Get-LocalGroupMember` `Set-LocalUser` `Remove-LocalGroupMember`
+Commands used: Get-LocalUser, Get-LocalGroupMember, Set-LocalUser, Remove-LocalGroupMember
 
 ### 2. NTFS Folder Permissions
 Created C:\LabFiles with three subfolders and applied NTFS permissions
@@ -42,10 +42,10 @@ Verified by logging in as test_user — Admin_Only denied, others accessible.
 
 ### 3. Computer Management Tools
 Explored all sections of compmgmt.msc:
-- **Event Viewer** — filtered Security log for Event ID 4624, found test_user interactive logon (Logon Type 2) recorded at 7:21 PM on 1/06/2026
-- **Device Manager** — identified unknown VirtIO devices, Red Hat VirtIO Ethernet Adapter and QEMU NVMe virtual disk
-- **Disk Management** — documented disk layout: EFI partition, 63GB C: drive, recovery partition, Windows ISO and UTM Guest Tools CD-ROMs
-- **Services** — stopped and restarted Print Spooler service
+- Event Viewer — filtered Security log for Event ID 4624, found test_user interactive logon recorded at 7:21 PM on 1/06/2026
+- Device Manager — identified unknown VirtIO devices, Red Hat VirtIO Ethernet Adapter and QEMU NVMe virtual disk
+- Disk Management — documented disk layout: EFI partition, 63GB C: drive, recovery partition, Windows ISO and UTM Guest Tools
+- Services — stopped and restarted Print Spooler service
 
 ### 4. Help Desk Tickets
 Three tickets raised and resolved based on real lab tasks:
@@ -53,56 +53,36 @@ Three tickets raised and resolved based on real lab tasks:
 - Ticket 002 — Folder access denied (NTFS permissions)
 - Ticket 003 — Static IP configuration request
 
-Full tickets in `/tickets` folder.
+Full tickets in /tickets folder.
 
 ### 5. PowerShell Admin Tasks
 
 | Command | Purpose |
 |---|---|
-| `Get-Process` | Top 15 processes by CPU — identified MsMpEng (Defender) as highest consumer |
-| `Get-Service` | All running services sorted alphabetically |
-| `Get-PSDrive` | Disk space — C: 34GB free, identified Z: as UTM shared Mac folder |
-| `
-cat > ~/Desktop/home-lab/README.md << 'EOF'
-# Sam Westlake-Cann — Home Lab
+| Get-Process | Top 15 processes by CPU |
+| Get-Service | All running services |
+| Get-PSDrive | Disk space across all drives |
+| Get-NetIPConfiguration | Confirmed static IP and DNS |
+| Get-Date - LastBootUpTime | System uptime |
+| Get-ComputerInfo | OS version, hostname, RAM, CPU |
 
-A practical home lab built to develop and demonstrate hands-on skills in 
-networking, Windows administration, and cybersecurity — targeted at 
-IT Support, Help Desk, and NOC roles.
+### 6. Windows Firewall Rules
+Verified all three firewall profiles enabled (Domain, Private, Public).
+Created, tested and removed an inbound block rule for ICMP ping.
 
-## Lab Environment
+- Created rule blocking inbound ICMPv4 type 8
+- Verified: ping from Mac returned 100% packet loss
+- Removed rule and confirmed deletion
+- Key learning: ping still blocked after rule removal due to NAT — same symptom, different cause
 
-| Component | Detail |
-|---|---|
-| Host machine | MacBook Air |
-| Virtualisation | UTM (free, Apple Silicon) |
-| Guest OS | Windows 11 (SAM-LAB-CLIENT01) |
-| Network mode | Shared Network (NAT) |
-| Host IP | 192.168.1.106 |
-| VM IP | 192.168.64.10 (static) |
+## Key Learnings
+- Principle of least privilege applies to both accounts and folder permissions
+- PowerShell description fields have a 48 character limit
+- NTFS inheritance must be disabled before applying custom permissions
+- Event Viewer Security log records every logon — critical for auditing
+- Same symptom can have different root causes at different network layers
+- GUI changes do not always apply — command line is the reliable fallback
+- Windows Firewall and NAT are independent security layers
 
-## Phases
-
-| Phase | Topic | Status |
-|---|---|---|
-| 1 | Networking fundamentals | ✅ Complete |
-| 2 | Windows administration | ✅ Complete |
-| 3 | Cybersecurity basics | 🔄 In progress |
-| 4 | NOC readiness | ⏳ Upcoming |
-| 5 | Portfolio & documentation | ⏳ Upcoming |
-
-## Goals
-
-- Build practical evidence of IT skills for job applications
-- Document troubleshooting processes as real ticket-style writeups
-- Work toward CompTIA A+, Network+, and Security+ certifications
-
-## Tickets
-
-Real help desk tickets raised and resolved during lab work:
-
-| Ticket | Title | Priority | Status |
-|---|---|---|---|
-| 001 | Printer not working | Low | ✅ Resolved |
-| 002 | User unable to access folder | Medium | ✅ Resolved |
-| 003 | Static IP configuration request | Medium | ✅ Resolved |
+## Screenshots
+All 36 screenshots in this folder, numbered in sequence.
