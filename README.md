@@ -1,11 +1,9 @@
 # Sam Westlake-Cann — Home Lab
-
 A practical home lab built to develop and demonstrate hands-on skills in 
 networking, Windows administration, and cybersecurity — targeted at 
-IT Support, Help Desk, and NOC roles.
+IT Support, Help Desk, and SOC/Cybersecurity Analyst roles.
 
 ## Lab Environment
-
 | Component | Detail |
 |---|---|
 | Host machine | MacBook Air |
@@ -16,25 +14,21 @@ IT Support, Help Desk, and NOC roles.
 | VM IP | 192.168.64.10 (static) |
 
 ## Phases
-
 | Phase | Topic | Status |
 |---|---|---|
 | 1 | Networking fundamentals | ✅ Complete |
 | 2 | Windows administration | ✅ Complete |
-| 3 | Cybersecurity basics | 🔄 In progress |
-| 4 | NOC readiness | ⏳ Upcoming |
+| 3 | Cybersecurity basics | ✅ Complete |
+| 4 | SIEM deployment (Wazuh) | ✅ Agent active — ongoing |
 | 5 | Portfolio & documentation | ⏳ Upcoming |
 
 ## Goals
-
 - Build practical evidence of IT skills for job applications
 - Document troubleshooting processes as real ticket-style writeups
 - Work toward CompTIA A+, Network+, and Security+ certifications
 
 ## Tickets
-
 Real help desk tickets raised and resolved during lab work:
-
 | Ticket | Title | Priority | Status |
 |---|---|---|---|
 | 001 | Printer not working | Low | ✅ Resolved |
