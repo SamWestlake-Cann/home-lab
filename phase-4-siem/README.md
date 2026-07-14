@@ -40,15 +40,21 @@ given ample free space on the host Mac (290GB available).
    network-troubleshooting.md for full details, including an
    attempted mDNS hostname fix and the permanent resolution
    via a router-level DHCP reservation
+10. Wrote and validated a custom detection rule for brute-force
+    login attempts, and tested detection coverage across four
+    additional attacker techniques (FIM, scheduled task
+    persistence, PowerShell script block logging, audit log
+    clearing) - see detection-testing.md for full details
 
 ## Screenshots
-See numbered screenshots in this folder (01, 03-07) documenting
-each stage from containers running through to the agent
-reconnection after the network troubleshooting described in
-network-troubleshooting.md.
+See numbered screenshots in this folder (01, 03-15) documenting
+each stage: initial deployment, agent connection, the network
+troubleshooting described in network-troubleshooting.md, and the
+detection testing described in detection-testing.md.
 
 ## Next steps
-- Generate test security events (failed logons, file changes)
-  to validate alerting pipeline
-- Explore File Integrity Monitoring module
-- Write/trigger a custom detection rule
+- Explore additional MITRE ATT&CK techniques for detection testing
+- Consider adding a second monitored endpoint for correlation
+  across multiple agents
+- Investigate Wazuh's active response capabilities (automated
+  blocking/remediation)
