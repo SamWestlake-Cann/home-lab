@@ -45,16 +45,24 @@ given ample free space on the host Mac (290GB available).
     additional attacker techniques (FIM, scheduled task
     persistence, PowerShell script block logging, audit log
     clearing) - see detection-testing.md for full details
+11. Configured and tested Active Response (automated reaction to
+    the custom brute-force rule), validating the full
+    add/check/continue/delete lifecycle and discovering two
+    genuine platform limitations (loopback whitelisting,
+    Windows/Linux script availability) - see active-response.md
+    for full details
 
 ## Screenshots
-See numbered screenshots in this folder (01, 03-15) documenting
+See numbered screenshots in this folder (01, 03-19) documenting
 each stage: initial deployment, agent connection, the network
-troubleshooting described in network-troubleshooting.md, and the
-detection testing described in detection-testing.md.
+troubleshooting described in network-troubleshooting.md, the
+detection testing described in detection-testing.md, and the
+Active Response work described in active-response.md.
 
 ## Next steps
+- Test Active Response IP blocking against a genuine remote
+  (non-loopback) brute-force attempt, e.g. via port-forwarded
+  RDP from another device on the network
 - Explore additional MITRE ATT&CK techniques for detection testing
 - Consider adding a second monitored endpoint for correlation
   across multiple agents
-- Investigate Wazuh's active response capabilities (automated
-  blocking/remediation)
