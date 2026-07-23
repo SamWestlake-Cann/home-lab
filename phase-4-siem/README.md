@@ -51,18 +51,27 @@ given ample free space on the host Mac (290GB available).
     genuine platform limitations (loopback whitelisting,
     Windows/Linux script availability) - see active-response.md
     for full details
+12. Integrated VirusTotal for automated threat intelligence
+    enrichment of FIM alerts, tested with both a clean file and
+    the EICAR standard test file, discovered and resolved a
+    missing Windows Defender log channel, and confirmed
+    detection at the highest severity level (12) seen in this
+    project - see virustotal-integration.md for full details
 
 ## Screenshots
-See numbered screenshots in this folder (01, 03-19) documenting
+See numbered screenshots in this folder (01, 03-24) documenting
 each stage: initial deployment, agent connection, the network
 troubleshooting described in network-troubleshooting.md, the
-detection testing described in detection-testing.md, and the
-Active Response work described in active-response.md.
+detection testing described in detection-testing.md, the Active
+Response work described in active-response.md, and the
+VirusTotal integration described in virustotal-integration.md.
 
 ## Next steps
 - Test Active Response IP blocking against a genuine remote
   (non-loopback) brute-force attempt, e.g. via port-forwarded
   RDP from another device on the network
-- Explore additional MITRE ATT&CK techniques for detection testing
+- Explore Wazuh's Vulnerability Detection module
+- Write a formal Incident Response report packaging the
+  brute-force detection work
 - Consider adding a second monitored endpoint for correlation
   across multiple agents
