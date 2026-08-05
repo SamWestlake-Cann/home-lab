@@ -19,7 +19,7 @@ detection built on Wazuh for direct comparison.
 - [x] Create Log Analytics Workspace
 - [x] Enable Microsoft Sentinel
 - [x] Deploy Windows VM as data source
-- [ ] Connect VM to Sentinel
+- [x] Connect VM to Sentinel
 - [ ] Build analytics rules (failed RDP, suspicious PowerShell)
 - [ ] Trigger and validate detections
 - [ ] Write on-prem (Wazuh) vs cloud (Sentinel) comparison
@@ -58,3 +58,15 @@ detection built on Wazuh for direct comparison.
   from an initial UTC misconfiguration)
 - Deallocated VM at end of session to avoid ongoing compute charges
 - Screenshots: 32-vm-deployment-succeeded.png, 33-vm-stopped-deallocated.png
+
+### 6 Aug 2026 — VM connected to Sentinel
+- Created Data Collection Rule "dcr-phase5-windows-security" via the
+  Windows Security Events via AMA connector, scoped to vm-phase5-sentinel-win
+- Collection type: All Security Events (AllEvents filter)
+- Navigating the Defender portal's connector setup required several
+  attempts — Sentinel's UI has moved significantly from the classic
+  Azure portal experience (now split across Content Hub, Data
+  Connectors, and per-connector detail panes)
+- Confirmed data flowing: 182 SecurityEvents ingested within minutes
+  of DCR creation
+- Screenshot: 34-dcr-created-data-flowing.png
