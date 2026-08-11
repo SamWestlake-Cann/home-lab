@@ -58,3 +58,44 @@ on a standard user rather than an already-standing admin.
 ## Growth plan
 Additional users/departments will be added in later sessions to simulate
 business growth and test how Dynamic Groups and CA policies scale.
+
+## Growth round 2 — expanded roster
+
+Added 9 additional users to simulate business growth, bringing total
+headcount to 14 (plus the real tenant admin account).
+
+| Name | Department | Job Title |
+|---|---|---|
+| Sam Reilly | IT Operations | Helpdesk Team Lead |
+| Priya Anand | Service Desk | L2 Support Technician |
+| Marcus Webb | Cybersecurity | SOC Analyst |
+| Elena Petrova | Cybersecurity | Security Engineer |
+| David Cutler | Finance | Accounts Payable Officer |
+| Rachel Cutler | Finance | Payroll Administrator |
+| Liam Foster | Sales & Client Services | Account Manager |
+| Grace Foster | Sales & Client Services | Business Development Rep |
+
+All created as Members, Usage location = Australia.
+
+A Guest/External contractor account is planned but not yet created —
+requires a real external email address for the invite flow, to be
+added in a future session (needed to properly test CA004).
+
+### Dynamic group re-verification after growth
+
+- **SOC-ALL** — now includes Amy Churm, Marcus Webb, Elena Petrova
+- **Finance-Sensitive** — now includes Neil Cutler, David Cutler,
+  Rachel Cutler
+- **IT-Admins-Eligible** — now includes Sam Westlake-Cann AND
+  **Rachel Cutler**. This was an unintended but instructive result:
+  Rachel's job title "Payroll Administrator" contains the word
+  "Administrator", so the `jobTitle -contains "Administrator"` rule
+  correctly matched her even though she sits in Finance, not IT.
+  This demonstrates the rule is doing literal attribute matching
+  rather than "is this person in IT" — a useful real-world lesson in
+  dynamic group rule precision. A tighter rule (e.g. combining job
+  title AND department) would be needed in production to scope this
+  group correctly.
+
+Screenshots: 56 (full roster), 57 (IT-Admins-Eligible updated),
+58 (Finance-Sensitive updated), 59 (SOC-ALL updated)
