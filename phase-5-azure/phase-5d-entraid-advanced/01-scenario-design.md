@@ -99,3 +99,28 @@ added in a future session (needed to properly test CA004).
 
 Screenshots: 56 (full roster), 57 (IT-Admins-Eligible updated),
 58 (Finance-Sensitive updated), 59 (SOC-ALL updated)
+
+## Guest/External contractor account
+
+Invited an external Guest user ("John Smith") to represent the
+Contractors/External tier, using **Users → Invite external user**.
+
+- **Job title:** IT Support Contractor
+- **Department:** Contractor/External
+- **User type:** Guest (confirmed)
+- **Invitation status:** Pending acceptance
+
+Verified via **Entra ID → Audit Logs** that the invitation was
+successfully processed on the Entra ID side (Invited Users |
+UserManagement | Invite external user | **Success**). The invitation
+email was not received at the target external address (tried both a
+Hotmail and a Gmail address, checked inbox/spam/promotions on both) —
+this appears to be a mail delivery/filtering issue outside the
+tenant's control, not a configuration fault, since Entra ID's own
+audit trail confirms the invite was sent successfully.
+
+The Guest account itself is fully usable for demonstrating dynamic
+targeting (e.g. CA004 targets "Guest or external users" by user type,
+which does not require invitation acceptance to apply). Full sign-in
+testing as this guest is deferred to a future session, potentially
+using a different email provider.
