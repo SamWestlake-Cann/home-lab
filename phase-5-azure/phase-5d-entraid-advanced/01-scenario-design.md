@@ -148,3 +148,20 @@ user, per Microsoft's documented best practice.
 This addressed a real Identity Secure Score finding for the tenant,
 demonstrating response to Microsoft's own security recommendations
 rather than just self-directed lab design.
+
+## User consent restriction (Identity Secure Score recommendation)
+
+Addressed a second Identity Secure Score finding ("Do not allow users
+to grant consent to unreliable applications") by configuring:
+
+**Entra ID → Enterprise applications → Consent and permissions →
+User consent settings**
+
+Selected: **"Allow user consent for apps from verified publishers,
+for selected permissions"** — Microsoft's recommended middle ground.
+Users can still consent to low-impact permissions from verified
+publishers or apps registered within the organisation, but cannot
+grant broader or unverified app access without admin review. This
+mitigates OAuth consent phishing risk (malicious apps tricking users
+into granting mailbox/file access) while avoiding the operational
+overhead of requiring admin approval for every legitimate app request.
