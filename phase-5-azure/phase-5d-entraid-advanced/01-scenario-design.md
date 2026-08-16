@@ -124,3 +124,27 @@ targeting (e.g. CA004 targets "Guest or external users" by user type,
 which does not require invitation acceptance to apply). Full sign-in
 testing as this guest is deferred to a future session, potentially
 using a different email provider.
+
+## Emergency access (break-glass) account
+
+Following a Microsoft Entra Identity Secure Score recommendation
+("Designate more than one global admin"), created a dedicated
+emergency access account rather than promoting an existing fictional
+user, per Microsoft's documented best practice.
+
+- **User:** Emergency Access Admin
+  (breakglass-admin@WestlakeCann.onmicrosoft.com)
+- **Role:** Global Administrator, assigned as a **standing/active**
+  role rather than PIM-eligible — deliberate choice, since a break-glass
+  account must work instantly during an emergency without requiring an
+  activation step.
+- **Conditional Access:** Excluded from all 4 CA policies (CA001-CA004),
+  same as the primary admin account, to guarantee this account can
+  never be locked out regardless of policy misconfiguration.
+- **Purpose:** Recovery path if the primary Global Admin account
+  (Sam@WestlakeCann.onmicrosoft.com) is ever compromised, locked out,
+  or has MFA/device issues.
+
+This addressed a real Identity Secure Score finding for the tenant,
+demonstrating response to Microsoft's own security recommendations
+rather than just self-directed lab design.
