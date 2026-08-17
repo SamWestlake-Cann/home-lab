@@ -56,3 +56,30 @@ This is a real-world example of why dynamic group rules should be
 reviewed against actual membership outcomes, not just assumed correct
 once written — literal attribute matching can produce unintended
 scope creep as an organisation's headcount grows.
+
+## Access Review configured
+
+Created a recurring Access Review on **IT-Admins-Eligible**, closing
+the governance loop on group membership rather than relying on manual
+checks (like the earlier Rachel Cutler edge case, which was caught
+by chance).
+
+- **Review name:** IT-Admins-Eligible Quarterly Recertification
+- **Scope:** Everyone in the group, all users
+- **Reviewer:** Amy Churm (Security Analyst) — continuing the
+  separation-of-duties pattern established with PIM approvals
+- **Recurrence:** Quarterly, no end date
+- **Duration per cycle:** 7 days
+- **Auto-apply results:** Enabled — decisions take effect automatically
+- **If reviewer doesn't respond:** Remove access (strict default)
+- **Justification required:** Yes
+- **Decision helpers:** "No sign-in within 30 days" enabled, giving
+  Amy sign-in activity context when deciding
+
+This ensures IT-Admins-Eligible membership is periodically
+recertified rather than assumed correct indefinitely — addressing the
+same class of issue that caused the earlier scope-creep bug, but as
+an ongoing automated control rather than a one-off manual fix.
+
+Screenshots: 71 (review created), plus the PIM approval workflow
+evidence (68-70) from the same session.
