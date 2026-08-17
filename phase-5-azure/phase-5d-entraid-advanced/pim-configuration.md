@@ -65,3 +65,26 @@ This closes the gap from the original PIM configuration, where Sam
 could self-activate User Administrator with no oversight. Future
 activation attempts will now generate an approval request that Amy
 must review and approve before the role becomes active.
+
+## Approval workflow tested end-to-end
+
+Verified the full two-person PIM activation flow, live, using genuine
+separate user sessions:
+
+1. Signed in as Sam Westlake-Cann, submitted an activation request for
+   User Administrator (justification + duration, same as the original
+   self-activation test)
+2. Request entered a **pending approval** state rather than activating
+   immediately — confirming the approval requirement is genuinely
+   enforced, not just configured
+3. Signed in as Amy Churm, located the request under **Approve
+   requests**, reviewed it, and approved with a comment
+4. Confirmed the role became Active on Sam's side following approval
+
+This demonstrates a real separation-of-duties control: privileged
+access elevation now requires justification, MFA, a bounded duration,
+AND a second person's sign-off — not just a single admin self-serving
+elevated access.
+
+Screenshots: 68 (pending request in Amy's approval queue), 69 (Amy
+approving with comment)
