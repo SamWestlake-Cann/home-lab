@@ -42,3 +42,26 @@ intermittently.
 - Next step for a future session: configure PIM approval workflows
   (requiring a second admin to approve activation) and PIM audit
   history review.
+
+## Approval workflow added
+
+Configured a second layer of control on the User Administrator
+eligible role, requiring approval before activation rather than
+allowing self-service elevation.
+
+- **Approver:** Amy Churm (Security Analyst, Cybersecurity)
+- **Activation requirements:** Azure MFA, justification required,
+  8-hour maximum duration, approval required
+
+**Design rationale:** rather than using an existing admin as approver,
+a Security Analyst was chosen deliberately to model a real-world
+separation-of-duties pattern common in MSPs and SOC-integrated
+organisations — the person requesting elevated access (IT Operations)
+is not the same function approving it (Security). This mirrors how
+many real environments route privileged access requests through
+security/SOC review rather than peer IT admins.
+
+This closes the gap from the original PIM configuration, where Sam
+could self-activate User Administrator with no oversight. Future
+activation attempts will now generate an approval request that Amy
+must review and approve before the role becomes active.
