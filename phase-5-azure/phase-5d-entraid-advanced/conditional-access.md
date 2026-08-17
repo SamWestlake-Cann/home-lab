@@ -82,3 +82,21 @@ compliance policy, rather than something enforced against real
 devices in this lab.
 
 All 4 policies: **State = On** as of 17/08/2026.
+
+## Known limitation — CA002 (tracked for Phase 6)
+
+CA002 is enforced (State: On) but currently **unsatisfiable in
+practice** — there are no Intune-enrolled/compliant devices in this
+tenant, so any sign-in attempt by IT-Admins-Eligible members (Sam
+Westlake-Cann, Rachel Cutler) will correctly be blocked by this
+policy, since no device can currently prove compliance.
+
+This is expected and by design, not a bug. It is deliberately left
+enforced (rather than reverted to Report-only) as an honest
+demonstration of the policy working correctly — it should not be
+mistaken for a live account lockout if referenced in a future session.
+
+**Resolution planned in Phase 6 (Microsoft Intune):** enrolling the
+UTM Windows 11 VM and building a Compliance Policy will provide a real
+compliant device, allowing this policy to be properly satisfied and
+tested end-to-end for the first time.
