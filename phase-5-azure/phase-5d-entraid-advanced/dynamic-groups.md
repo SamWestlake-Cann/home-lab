@@ -34,3 +34,25 @@ correctly within minutes of creation — no manual membership assignment.
   creation — no manual "Add members" step was needed.
 - These groups are designed to be reused as CA policy targets in the next
   stage (see conditional-access.md).
+
+## Rule refinement: IT-Admins-Eligible
+
+The original rule `(user.jobTitle -contains "Administrator")` was
+identified as too broad — it incorrectly captured Rachel Cutler
+(Payroll Administrator, Finance) alongside Sam Westlake-Cann (Systems
+Administrator, IT Operations), since it matched on job title text
+alone with no department constraint.
+
+**Updated rule:**
+This correctly scopes the group to IT Operations administrators only —
+the intended target population for CA002 (compliant device
+requirement) and the PIM eligible User Administrator role assignment.
+
+**Result verified:** Rachel Cutler removed from the group; Sam
+Westlake-Cann remains. Confirmed via the Members tab after the rule
+update.
+
+This is a real-world example of why dynamic group rules should be
+reviewed against actual membership outcomes, not just assumed correct
+once written — literal attribute matching can produce unintended
+scope creep as an organisation's headcount grows.
