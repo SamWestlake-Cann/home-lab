@@ -54,3 +54,31 @@ policies to be created (the two features cannot run simultaneously).
   confirm the policy behaves as expected and does not unintentionally
   block legitimate access.
 - Screenshots: 48 (CA001), 49 (CA002), 50 (CA003), 51 (all four policies)
+
+## Enforcement rollout
+
+All 4 Conditional Access policies were moved from Report-only to
+**enforced (On)**, following a real review-then-enforce process:
+
+1. Generated real sign-in activity from multiple users
+2. Reviewed each sign-in's **Report only** tab under Sign-in logs to
+   confirm each policy correctly scoped to its intended users, with
+   no unintended blocking
+3. Confirmed the admin exclusion (both the primary Global Admin and
+   the Emergency Access break-glass account) correctly resulted in
+   "Not applicable" across all 4 policies for those accounts
+4. Switched CA003 (lowest risk — legacy auth block) to On first
+5. Verified live enforcement by signing in as Stephanie Westlake
+   (Service Desk) and confirming MFA was genuinely prompted and
+   required — not just simulated in Report-only
+6. Switched the remaining policies (CA001, CA002, CA004) to On
+
+**Note on CA002 in practice:** since this lab tenant has no
+Intune-enrolled/compliant devices, IT-Admins-Eligible members (Sam
+Westlake-Cann, Rachel Cutler) cannot currently satisfy the compliant
+device requirement in real sign-in. This is expected — CA002 remains
+primarily an architectural demonstration of role-scoped device
+compliance policy, rather than something enforced against real
+devices in this lab.
+
+All 4 policies: **State = On** as of 17/08/2026.
