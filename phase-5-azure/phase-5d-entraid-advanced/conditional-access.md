@@ -100,3 +100,51 @@ mistaken for a live account lockout if referenced in a future session.
 UTM Windows 11 VM and building a Compliance Policy will provide a real
 compliant device, allowing this policy to be properly satisfied and
 tested end-to-end for the first time.
+
+## CA005 & CA006 — Risk-based Conditional Access (Identity Protection)
+
+Extended the CA policy set with two risk-based policies, built as
+separate policies rather than combined into one, following Microsoft's
+own guidance (the policy builder explicitly warns against combining
+User Risk and Sign-in Risk conditions in a single policy, since they
+rarely co-occur and are better handled independently).
+
+### CA005 - User risk policy
+- **Users:** All users (admin + break-glass accounts excluded)
+- **Target resources:** All resources
+- **Condition:** User risk = Medium and above
+- **Grant:** Require password change
+- **Purpose:** If a user's *account* is flagged as likely compromised
+  (based on leaked credentials, unusual activity patterns, etc.),
+  force a password reset before further access is granted.
+- **State:** Report-only
+
+### CA006 - Sign-in risk policy
+- **Users:** All users (admin + break-glass accounts excluded)
+- **Target resources:** All resources
+- **Condition:** Sign-in risk = Medium and above
+- **Grant:** Require multifactor authentication
+- **Purpose:** If a specific *sign-in session* looks risky (unfamiliar
+  location, anonymous IP, impossible travel, etc.), require MFA to
+  confirm it's genuinely the legitimate user before granting access.
+- **State:** Report-only
+
+### Design rationale
+User risk and sign-in risk represent different threat models: User
+risk asks "is this account likely compromised in general?" (calls for
+a password reset — a durable fix), while Sign-in risk asks "is this
+specific session suspicious?" (calls for MFA — a session-specific
+challenge). Splitting them into separate policies also makes each
+one's Insights and reporting data easier to interpret independently.
+
+### Licensing prerequisite
+Both policies require Microsoft Entra ID P2 (Identity Protection risk
+signals are a P2-exclusive feature). P2 licenses were assigned to all
+13 fictional operational users ahead of building these policies to
+ensure full coverage.
+
+### Note on the legacy Identity Protection "User risk policy" screen
+Entra ID also has a standalone legacy risk policy configuration screen
+under ID Protection → Protect. This is being retired 1 October 2026,
+with Microsoft explicitly directing risk-based policy configuration
+into Conditional Access instead — which is the approach taken here.
